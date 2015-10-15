@@ -9,6 +9,12 @@ import (
 	"bitbucket.org/lazadaweb/go-kapusta"
 )
 
+// ILogger logger interface
+type ILogger interface {
+	Debugf(format string, args ...interface{})
+	Errorf(format string, args ...interface{})
+}
+
 // Decorator returns DecoratorFunc that logs before and after request
 func Decorator(logger ILogger, dumpRequests bool) kapusta.DecoratorFunc {
 	return func(c kapusta.IClient) kapusta.IClient {
