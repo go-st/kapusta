@@ -7,16 +7,11 @@ import (
 	"net/http/httputil"
 
 	"bitbucket.org/lazadaweb/go-kapusta"
+	"bitbucket.org/lazadaweb/loggo"
 )
 
-// ILogger logger interface
-type ILogger interface {
-	Debugf(format string, args ...interface{})
-	Errorf(format string, args ...interface{})
-}
-
 // Decorator returns DecoratorFunc that logs before and after request
-func Decorator(logger ILogger, dumpRequests bool) kapusta.DecoratorFunc {
+func Decorator(logger loggo.ILogger, dumpRequests bool) kapusta.DecoratorFunc {
 	return func(c kapusta.IClient) kapusta.IClient {
 		return kapusta.ClientFunc(func(r *http.Request) (*http.Response, error) {
 			logger.Debugf("start request: %v", r.URL)
