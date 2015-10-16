@@ -1,4 +1,4 @@
-package logger
+package log
 
 import (
 	"bytes"
@@ -10,8 +10,8 @@ import (
 	"bitbucket.org/lazadaweb/loggo"
 )
 
-// Decorator returns DecoratorFunc that logs before and after request
-func Decorator(logger loggo.ILogger, dumpRequests bool) kapusta.DecoratorFunc {
+// LoggerDecorator returns DecoratorFunc that logs before and after request
+func LoggerDecorator(logger loggo.ILogger, dumpRequests bool) kapusta.DecoratorFunc {
 	return func(c kapusta.IClient) kapusta.IClient {
 		return kapusta.ClientFunc(func(r *http.Request) (*http.Response, error) {
 			logger.Debugf("start request: %v", r.URL)

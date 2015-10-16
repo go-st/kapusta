@@ -16,7 +16,7 @@ It`s middleware approach for using http.Client. You can wrap your client with di
 
 Internal http package doesn`t have any interface for http clients, so Kapusta provides very simple client interface:
 ```go
-type Client interface {
+type IClient interface {
 	Do(*http.Request) (*http.Response, error)
 }
 ```
@@ -26,7 +26,7 @@ type Client interface {
 
 Decorator is like a middleware:
 ```go
-type DecoratorFunc func(Client) Client
+type DecoratorFunc func(IClient) IClient
 ```
 
 Kapusta provides some helpful decorators for you:
@@ -43,8 +43,8 @@ client := http.DefaultClient
 
 decoratedClient := kapusta.Decorate(
     client,
-    kapusta.HeaderDecorator("X-Auth", "123"),
-    kapusta.RecoverDecorator(), // better to place it last to recover panics from decorators too
+    decorator.HeaderDecorator("X-Auth", "123"),
+    decorator.RecoverDecorator(), // better to place it last to recover panics from decorators too
 )
 ```
 
@@ -66,7 +66,7 @@ func(c *AwesomeStuffClient) Do(r *http.Request) (*http.Response, error) {
     return res, err
 }
 
-func AwesomeStuffDecorator(c kapusta.Client) kapusta.Client {
+func AwesomeStuffDecorator(c kapusta.IClient) kapusta.IClient {
     return &AwesomeStuffClient{client: c}
 }
 ```
@@ -78,7 +78,7 @@ type ClientFunc func(*http.Request) (*http.Response, error)
 
 So the same example will be looks like:
 ```go
-func AwesomeStuffDecorator(c kapusta.Client) kapusta.Client {
+func AwesomeStuffDecorator(c kapusta.IClient) kapusta.IClient {
 	return kapusta.ClientFunc(func(r *http.Request) (*http.Response, error) {
 		// some stuff before call
         res, err := c.client.Do(r)

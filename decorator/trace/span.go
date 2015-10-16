@@ -4,11 +4,12 @@ import (
 	"fmt"
 
 	"bitbucket.org/lazadaweb/go-kapusta"
+	"bitbucket.org/lazadaweb/go-kapusta/decorator"
 	"bitbucket.org/lazadaweb/go-trace"
 )
 
-// Decorator decorates kapusta client with Span info
-func Decorator(id gotrace.Span, name string) kapusta.DecoratorFunc {
+// SpanDecorator decorates kapusta client with Span info
+func SpanDecorator(id gotrace.Span, name string) kapusta.DecoratorFunc {
 	var forwardedAppsHeader string
 
 	if id.ForwardedApps == "" {
@@ -17,7 +18,7 @@ func Decorator(id gotrace.Span, name string) kapusta.DecoratorFunc {
 		forwardedAppsHeader = fmt.Sprintf("%s,%s", id.ForwardedApps, name)
 	}
 
-	return kapusta.HeadersDecorator(map[string]string{
+	return decorator.HeadersDecorator(map[string]string{
 		gotrace.TraceIDHeader:       fmt.Sprintf("%X", id.TraceID),
 		gotrace.SpanIDHeader:        fmt.Sprintf("%X", id.SpanID),
 		gotrace.ParentSpanIDHeader:  fmt.Sprintf("%X", id.ParentSpanID),
