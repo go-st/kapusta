@@ -87,3 +87,14 @@ func (s *TestClientSuite) TestGetWithQueryParams(c *C) {
 	c.Assert(res.StatusCode, Equals, 200)
 	c.Assert(readerToString(res.Body), Equals, "response")
 }
+
+func (s *TestClientSuite) TestRequest(c *C) {
+	client := NewClient()
+	client.Request().WillReturn(200, "response")
+
+	res, err := client.Do(s.newRequest("GET", "/path", nil))
+
+	c.Assert(err, IsNil)
+	c.Assert(res.StatusCode, Equals, 200)
+	c.Assert(readerToString(res.Body), Equals, "response")
+}
