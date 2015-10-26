@@ -7,11 +7,11 @@ import (
 	"net/http/httputil"
 
 	"bitbucket.org/lazadaweb/go-kapusta"
-	"bitbucket.org/lazadaweb/loggo"
+	"bitbucket.org/lazadaweb/go-logger"
 )
 
 // LoggerDecorator returns DecoratorFunc that logs before and after request
-func LoggerDecorator(logger loggo.ILogger, dumpRequests bool) kapusta.DecoratorFunc {
+func LoggerDecorator(logger logger.ILogger, dumpRequests bool) kapusta.DecoratorFunc {
 	return func(c kapusta.IClient) kapusta.IClient {
 		return kapusta.ClientFunc(func(r *http.Request) (*http.Response, error) {
 			logger.Debugf("start request: %v", r.URL)
