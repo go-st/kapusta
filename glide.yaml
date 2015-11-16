@@ -4,3 +4,11 @@ import:
     vcs: git
     version: ~1.x
     repo: git@bitbucket.org:lazadaweb/go-logger.git
+  - package: bitbucket.org/lazadaweb/go-trace
+    vcs: git
+    version: ~1.x
+    repo: git@bitbucket.org:lazadaweb/go-trace.git
+  - package: bitbucket.org/lazadaweb/discovery
+    vcs: git
+    version: ~1.x
+    repo: git@bitbucket.org:lazadaweb/discovery.git

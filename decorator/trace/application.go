@@ -15,6 +15,6 @@ func ApplicationDecorator(name, version string) kapusta.DecoratorFunc {
 	return decorator.HeadersDecorator(map[string]string{
 		gotrace.AppNameHeader:    name,
 		gotrace.AppVersionHeader: version,
-		gotrace.AppNodeHeader:    hostname,
+		gotrace.NodeHeader:       hostname,
 	})
 }
