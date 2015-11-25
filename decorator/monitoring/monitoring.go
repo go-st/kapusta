@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"time"
 
-	"bitbucket.org/lazadaweb/go-kapusta"
 	"bitbucket.org/lazadaweb/go-logger"
 	"bitbucket.org/lazadaweb/go-metrics"
+	"godep.lzd.co/go-kapusta"
 )
 
 const longRequestThreshold = 500 * time.Millisecond

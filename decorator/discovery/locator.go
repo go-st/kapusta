@@ -6,7 +6,7 @@ import (
 	"net/url"
 
 	"bitbucket.org/lazadaweb/discovery/discovery"
-	"bitbucket.org/lazadaweb/go-kapusta"
+	"godep.lzd.co/go-kapusta"
 )
 
 // LocatorDecorator returns a DecoratorFunc that gets URL from Locator and replace host and scheme in request URL

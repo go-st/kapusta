@@ -6,7 +6,7 @@ import (
 	"net/url"
 
 	"bitbucket.org/lazadaweb/discovery/balancer"
-	"bitbucket.org/lazadaweb/go-kapusta"
+	"godep.lzd.co/go-kapusta"
 )
 
 // BalancerDecorator returns a DecoratorFunc that gets URL from Balancer and replace host and scheme in request URL
