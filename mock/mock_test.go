@@ -1,7 +1,6 @@
 package mock
 
 import (
-	_ "goblin/test"
 	"testing"
 
 	"bytes"

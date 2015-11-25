@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"testing"
 
-	"bitbucket.org/lazadaweb/go-kapusta"
+	"godep.lzd.co/go-kapusta"
 	. "gopkg.in/check.v1"
 )
 

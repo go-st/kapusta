@@ -3,9 +3,9 @@ package trace
 import (
 	"os"
 
-	"bitbucket.org/lazadaweb/go-kapusta"
-	"bitbucket.org/lazadaweb/go-kapusta/decorator"
 	"bitbucket.org/lazadaweb/go-trace"
+	"godep.lzd.co/go-kapusta"
+	"godep.lzd.co/go-kapusta/decorator"
 )
 
 // ApplicationDecorator returns a decorator that add information about current application

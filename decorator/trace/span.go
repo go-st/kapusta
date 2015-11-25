@@ -3,9 +3,9 @@ package trace
 import (
 	"fmt"
 
-	"bitbucket.org/lazadaweb/go-kapusta"
-	"bitbucket.org/lazadaweb/go-kapusta/decorator"
 	"bitbucket.org/lazadaweb/go-trace"
+	"godep.lzd.co/go-kapusta"
+	"godep.lzd.co/go-kapusta/decorator"
 )
 
 // SpanDecorator decorates kapusta client with Span info

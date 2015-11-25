@@ -1,4 +1,4 @@
-package: bitbucket.org/lazadaweb/go-kapusta
+package: godep.lzd.co/go-kapusta
 import:
   - package: bitbucket.org/lazadaweb/go-logger
     vcs: git
