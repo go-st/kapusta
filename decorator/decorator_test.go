@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"testing"
 
-	"godep.lzd.co/go-kapusta"
+	"github.com/go-st/kapusta"
 	. "gopkg.in/check.v1"
 )
 

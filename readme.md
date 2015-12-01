@@ -1,5 +1,7 @@
 # Kapusta
 
+[![Build Status](https://travis-ci.org/go-st/kapusta.svg?branch=master)](https://travis-ci.org/go-st/kapusta)
+
 It`s middleware approach for using http.Client. You can wrap your client with different functionality: 
 
  - log every request

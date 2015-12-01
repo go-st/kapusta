@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"net/http/httputil"
 
-	"bitbucket.org/lazadaweb/go-logger"
-	"godep.lzd.co/go-kapusta"
+	"github.com/go-st/kapusta"
+	"github.com/go-st/logger"
 )
 
 // LoggerDecorator returns DecoratorFunc that logs before and after request

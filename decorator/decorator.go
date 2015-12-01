@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"godep.lzd.co/go-kapusta"
+	"github.com/go-st/kapusta"
 )
 
 // HeaderDecorator returns a DecoratorFunc that adds the given HTTP header to every request done by a Client.
