@@ -53,8 +53,10 @@ func (p *Promise) Check(r *http.Request) (*http.Response, bool) {
 		return nil, false
 	}
 
-	if body, ok := p.response.Body.(io.Seeker); ok {
-		body.Seek(0, 0)
+	if p.response != nil {
+		if body, ok := p.response.Body.(io.Seeker); ok {
+			body.Seek(0, 0)
+		}
 	}
 
 	return p.response, true
