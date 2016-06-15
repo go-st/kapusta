@@ -21,8 +21,13 @@ type PromiseBuilder struct {
 	checkers []CheckerFunc
 }
 
-type closer struct {
+type body interface {
 	io.Reader
+	io.Seeker
+}
+
+type closer struct {
+	body
 }
 
 // Check check requests passes all checkers
@@ -48,11 +53,19 @@ func (p *Promise) Check(r *http.Request) (*http.Response, bool) {
 		return nil, false
 	}
 
+	if body, ok := p.response.Body.(io.Seeker); ok {
+		body.Seek(0, 0)
+	}
+
 	return p.response, true
 }
 
 func (c closer) Close() error {
 	return nil
+}
+
+func (c closer) Seek(offset int64, whence int) (int64, error) {
+	return c.body.Seek(offset, whence)
 }
 
 // NewPromiseBuilder constructor for ruleBuilder.
